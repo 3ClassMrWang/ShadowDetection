@@ -31,4 +31,5 @@ bgs和sdd算法性能采用ChangeDetection.net数据集进行测量，stats根�
 > CAUTION
 
 bgs采用的是BGSLibrary，共有37种算法
-	
+
+对应平台为ubuntu 15.04及OpenCV 2.4.9

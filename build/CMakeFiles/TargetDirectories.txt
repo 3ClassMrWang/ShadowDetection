@@ -1,0 +1,5 @@
+/home/wcj/Documents/graduationproject/ShadowDetection/build/CMakeFiles/bgs.dir
+/home/wcj/Documents/graduationproject/ShadowDetection/build/CMakeFiles/bgs_sdd.dir
+/home/wcj/Documents/graduationproject/ShadowDetection/build/CMakeFiles/demo.dir
+/home/wcj/Documents/graduationproject/ShadowDetection/build/CMakeFiles/sdd.dir
+/home/wcj/Documents/graduationproject/ShadowDetection/build/CMakeFiles/stats.dir
