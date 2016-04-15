@@ -23,34 +23,42 @@ if(${OpenCV_VERSION} VERSION_LESS 2.3.1)
 endif()
 
 file(GLOB sources FrameProcessor.cpp PreProcessor.cpp VideoAnalysis.cpp  VideoCapture.cpp videofolder/VideoFolder.cpp)
-file(GLOB main Main.cpp)
+file(GLOB bgs Bgs.cpp)
 file(GLOB demo Demo.cpp)
+file(GLOB stats Stats.cpp)
+file(GLOB sdd Sdd.cpp)
 
 list(REMOVE_ITEM sources ${demo})
+list(REMOVE_ITEM sources ${stats})
+list(REMOVE_ITEM sources ${sdd})
 
 file(GLOB_RECURSE analysis package_analysis/*.cpp)
-file(GLOB_RECURSE bgs package_bgs/*.cpp package_bgs/*.c package_sdd/*.cpp)
-file(GLOB_RECURSE bgs_include package_bgs/*.h videofolder/*.h)
+file(GLOB_RECURSE bgs_sdd package_bgs/*.cpp package_bgs/*.c package_sdd/*.cpp)
+file(GLOB_RECURSE bgs_sdd_include package_bgs/*.h videofolder/*.h)
 
 # GMG is not available in older OpenCV versions
 if(${OpenCV_VERSION} VERSION_LESS 2.4.3)
   file(GLOB gmg package_bgs/GMG.cpp)
-  list(REMOVE_ITEM bgs ${gmg})
+  list(REMOVE_ITEM bgs_sdd ${gmg})
 endif()
 
 include_directories(${CMAKE_SOURCE_DIR})
 
-add_library(bgs SHARED ${sources} ${bgs} ${analysis})
-target_link_libraries(bgs ${OpenCV_LIBS})
-set_property(TARGET bgs PROPERTY PUBLIC_HEADER ${bgs_include})
+add_library(bgs_sdd SHARED ${sources} ${bgs_sdd} ${analysis})
+target_link_libraries(bgs_sdd ${OpenCV_LIBS})
+set_property(TARGET bgs_sdd PROPERTY PUBLIC_HEADER ${bgs_sdd_include})
 
-add_executable(bgs_bin ${main})
-target_link_libraries(bgs_bin ${OpenCV_LIBS} bgs)
-set_target_properties(bgs_bin
-  PROPERTIES OUTPUT_NAME bgs)
+add_executable(bgs ${bgs})
+target_link_libraries(bgs ${OpenCV_LIBS} bgs_sdd)
 
-add_executable(bgs_demo ${demo})
-target_link_libraries(bgs_demo ${OpenCV_LIBS} bgs)
+add_executable(demo ${demo})
+target_link_libraries(demo ${OpenCV_LIBS} bgs_sdd)
+
+add_executable(stats ${stats})
+target_link_libraries(stats ${OpenCV_LIBS} bgs_sdd)
+
+add_executable(sdd ${sdd})
+target_link_libraries(sdd ${OpenCV_LIBS} bgs_sdd)
 
 #INSTALL(TARGETS bgs
 #	bgs_demo
