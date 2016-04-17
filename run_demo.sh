@@ -1,7 +1,7 @@
 #!/bin/bash
 #./build/demo dataset/dataset/shadow/backdoor dataset/results 23 #效果较好
 
-./build/demo dataset/dataset/shadow/bungalows dataset/results 23
+./build/demo dataset/office dataset/results 23
 
 #./build/demo dataset/dataset/shadow/busStation dataset/results 23 #一般般
 

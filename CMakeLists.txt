@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 2.8)
 
-project(bgs)
+project(ShadowDetection)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=gnu++0x")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99")

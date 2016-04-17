@@ -1,4 +1,4 @@
-// Copyright (C) 2011 NICTA (www.nicta.com.au)
+﻿// Copyright (C) 2011 NICTA (www.nicta.com.au)
 // Copyright (C) 2011 Andres Sanin
 //
 // This file is provided without any warranty of fitness for any purpose.
@@ -50,5 +50,5 @@ int main() {
 
 	cv::waitKey();
 
-	return 0;
+    return 0;
 }
